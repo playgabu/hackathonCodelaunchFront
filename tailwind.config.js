@@ -11,7 +11,10 @@ module.exports = {
       },
       fontWeight: {
         'extrabold': '800',
-      }
+      },
+      boxShadow: {
+        custom: '1px 35px 1px rgba(0, 0, 0, 1)',
+      },
     },
   },
   plugins: [],

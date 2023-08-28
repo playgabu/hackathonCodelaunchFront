@@ -11,9 +11,7 @@ import Navigation from './src/Navigation';
 
 function App(): JSX.Element {
   return (
-    <SafeAreaView>
       <Navigation/>
-    </SafeAreaView>
   );
 }
 

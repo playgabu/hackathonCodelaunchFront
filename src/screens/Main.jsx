@@ -1,34 +1,31 @@
 
 import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, Image, Animated } from 'react-native';
-import { styled } from 'nativewind';
 import { withExpoSnack } from 'nativewind';
+import { useNavigation } from '@react-navigation/native';
+import Button from '../components/Button'
 
 
-const Main = ({ navigation }) => {
+const Main = () => {
     const [showLogin, setShowLogin] = useState(false)
     const translateY = new Animated.Value(0);
     const opacity = useState(new Animated.Value(0))[0]
-
-    const StyledView = styled(View)
-    const StyledText = styled(Text)
-    const StyledTouchableOpacity = styled(TouchableOpacity)
+    const navigation = useNavigation();
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            // navigation.navigate('Login');
             setShowLogin(true);
             handleTransition();
-        }, 3000);
+        }, 2000);
 
         return () => clearTimeout(timer);
-    }, [navigation]);
+    }, []);
 
     useEffect(() => {
         if (showLogin) {
             Animated.timing(translateY, {
                 toValue: -200,
-                duration: 300,
+                duration: 500,
                 useNativeDriver: true,
             }).start();
         } else {
@@ -43,10 +40,19 @@ const Main = ({ navigation }) => {
     const handleTransition = () => {
         Animated.timing(opacity, {
             toValue: 1,
-            duration: 1000,
+            duration: 500,
             useNativeDriver: true,
         }).start();
     };
+
+    const login = () => {
+        navigation.navigate('Login')
+    }
+
+    const signin = () => {
+        // navigation.navigate('Signin')
+        console.log('signin')
+    }
 
     const openTerminos = () => {
         console.log('Open Terminos')
@@ -57,54 +63,59 @@ const Main = ({ navigation }) => {
     }
 
     return (
-        <StyledView className="flex w-screen h-screen bg-primaryLighter flex-1 items-center justify-center p-2" >
+        <View className="flex w-screen h-screen bg-primaryLighter flex-1 items-center justify-center p-2" >
             <Animated.View style={[{position:'absolute', transform: [{ translateY }] }]}>
-                <StyledView className='flex flex-row justify-center mx-4'>
+                <View className='flex flex-row justify-center mx-4'>
                     <Image
                         className='flex w-100'
                         style={{ width: 155, height: 62 }}
                         source={require('../assets/gabu_logo.png')}
                     />
-                </StyledView>
-                <StyledText className="flex flex-row text-white text-2xl text-center font-bold">Donde los niños juegan y se divierten seguros</StyledText>
+                </View>
+                <Text className="flex flex-row text-white text-2xl text-center font-bold">
+                    Donde los niños juegan y se divierten seguros
+                </Text>
             </Animated.View>
 
             {showLogin ? (
                 <Animated.View style={[{ opacity }]} className='flex w-screen h-100 mx-2 pt-80'>
-                    <StyledView className='flex w-100 m-2 p-2'>
-                        <StyledText className="flex flex-row bg-secondary border-solid border-2 text-black text-xl font-extrabold shadow-xl text-center rounded-xl ma-5 p-4"> Registrarme</StyledText>
-                    </StyledView>
-                    <StyledView className='flex w-100 m-2 p-2'>
-                        <StyledText
-                            className="flex flex-row bg-primary text-secondary text-xl font-bold text-center rounded-xl ma-5 p-4"
-                        >
-                            Ingresar
-                        </StyledText>
-                    </StyledView>
-                    <StyledView className="flex flex-row justify-center w-100 px-10 py-10">
-                        <StyledTouchableOpacity
+                    <View className='flex w-100 m-2 p-2'>
+                        <Button
+                            text='Registrarme'
+                            isSecondary
+                            onPress={login}
+                        />
+                    </View>
+                    <View className='flex w-100 m-2 p-2'>
+                        <Button
+                            text='Ingresar'
+                            onPress={login}
+                        />
+                    </View>
+                    <View className="flex flex-row justify-center w-100 px-10 py-10">
+                        <TouchableOpacity
                             className="text-black text-center mx-5"
-                            onPress={openTerminos()}
+                            onPress={openTerminos}
                         >
-                            <StyledText className='text-lg font-bold text-secondary text-decoration-line: underline'>
+                            <Text className='text-lg font-bold text-secondary text-decoration-line: underline'>
                                 Terminos
-                            </StyledText>
-                        </StyledTouchableOpacity>
-                        <StyledTouchableOpacity
+                            </Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
                             className="text-black text-center mx-5"
-                            onPress={openPrivacidad()}
+                            onPress={openPrivacidad}
                         >
-                            <StyledText className='text-lg font-bold text-secondary text-decoration-line: underline'>
+                            <Text className='text-lg font-bold text-secondary text-decoration-line: underline'>
                                 Privacidad
-                            </StyledText>
-                        </StyledTouchableOpacity>
-                    </StyledView>
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
                 </Animated.View>
             ) : (
-                    <StyledView></StyledView>
+                    <View></View>
                 )
             }
-        </StyledView>
+        </View>
         
     );
 };
