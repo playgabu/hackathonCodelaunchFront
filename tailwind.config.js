@@ -8,6 +8,9 @@ module.exports = {
         primaryLighter: '#6C20EE',
         inputBg: '#F2F4F5',
         secondary: '#FFFFFF'
+      },
+      fontWeight: {
+        'extrabold': '800',
       }
     },
   },
