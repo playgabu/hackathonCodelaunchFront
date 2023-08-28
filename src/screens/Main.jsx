@@ -50,8 +50,7 @@ const Main = () => {
     }
 
     const signin = () => {
-        // navigation.navigate('Signin')
-        console.log('signin')
+        navigation.navigate('Signin')
     }
 
     const openTerminos = () => {
@@ -89,7 +88,7 @@ const Main = () => {
                     <View className='flex w-100 m-2 p-2'>
                         <Button
                             text='Ingresar'
-                            onPress={login}
+                            onPress={signin}
                         />
                     </View>
                     <View className="flex flex-row justify-center w-100 px-10 py-10">

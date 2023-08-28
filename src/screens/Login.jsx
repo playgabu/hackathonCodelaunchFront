@@ -25,6 +25,10 @@ const Login = () => {
         navigation.navigate('SecureProfile')
     }
 
+    const back = () => {
+        navigation.navigate('Main')
+    }
+
     const openTerminos = () => {
         console.log('Open Terminos')
     }
@@ -74,16 +78,23 @@ const Login = () => {
                 value={accountData?.password || ''}
                 isRequired
             />
-            <View className='mt-6'>
+            <View className='mt-4'>
                 <Button
                     text='Registrarme'
                     onPress={registerMe}  
                 />
             </View>
+            <View className='mt-4'>
+                <Button
+                    text='Regresar'
+                    isSecondary
+                    onPress={back}  
+                />
+            </View>
             <Text className='mt-6'>
                 Al hacer clic en Registrarme, acepta los Términos de uso, y aceptas la Política de privacidad.
             </Text>
-            <View className="flex flex-row justify-center w-100 py-8">
+            <View className="flex flex-row justify-center w-100 mt-4">
                 <TouchableOpacity
                     className="text-black text-center mx-5"
                     onPress={openTerminos}
