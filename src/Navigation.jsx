@@ -5,6 +5,9 @@ import Main from './screens/Main';
 import Login from './screens/Login';
 import Signin from './screens/Signin';
 import SecureProfile from './screens/SecureProfile';
+import Home from './screens/Home';
+import DadsProfile from './screens/DadsProfile';
+import KidProfile from './screens/KidProfile';
 
 const Stack = createStackNavigator();
 
@@ -16,6 +19,9 @@ export default function Navigation() {
                 <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
                 <Stack.Screen name="Signin" component={Signin} options={{ headerShown: false }} />
                 <Stack.Screen name="SecureProfile" component={SecureProfile} options={{ headerShown: false }} />
+                <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
+                <Stack.Screen name="DadProfile" component={DadsProfile} options={{ headerShown: false }} />
+                <Stack.Screen name="KidProfile" component={KidProfile} options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
     );

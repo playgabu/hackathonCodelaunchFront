@@ -2,16 +2,10 @@ import React from "react";
 import NextGame from "../components/NextGame";
 import AvailableGame from "../components/AvailableGame";
 import { withExpoSnack } from 'nativewind';
-import { styled } from 'nativewind';
+import { useNavigation } from '@react-navigation/native';
+
 import { Text, View, StyleSheet,Button, Pressable, Image, ImageBackground,ScrollView } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-
-
-const StyledView = styled(View)
-const StyledText = styled(Text)
-const StyledButton = styled(Button)
-const StyledImages = styled(Image)
-
 
 const styles = StyleSheet.create(
   {
@@ -88,48 +82,61 @@ const styles = StyleSheet.create(
 
 const ProfilePictureCircle = ({uri, userName}) => {
   return (
-    <StyledView className="flex-1 flex-row flex-wrap flex-start">
-       <StyledView className="rounded-full" style={styles.pictureContainer}>
-          <StyledImages
+    <View className="flex-1 flex-row flex-wrap flex-start">
+       <View className="rounded-full" style={styles.pictureContainer}>
+          <Image
             className="rounded-full"
             style={styles.tinyLogo}
             source={{
               uri: uri
             }}>  
-          </StyledImages>
-        </StyledView>
-        <StyledText className="p-3 text-base text-primary font-bold">
+          </Image>
+        </View>
+        <Text className="p-3 text-base text-primary font-bold">
           {userName}
-        </StyledText>
-    </StyledView>
+        </Text>
+    </View>
     
   );
 }
 
 const KidProfileButton = props => {
+  const navigation = useNavigation();
+
+  const goToKidProfile = () => {
+    navigation.navigate('KidProfile')
+  }
+
   return (
-    <StyledView>
+    <Pressable
+      onPress={goToKidProfile}>
       <ProfilePictureCircle 
         uri="https://reactnative.dev/img/tiny_logo.png"
         userName="DiegoSonic"/>
-    </StyledView>
+    </Pressable>
   );
 };
 
 const HomeHeader = props => {
+  const navigation = useNavigation();
+
+  const goToDadProfile = () => {
+    navigation.navigate('DadProfile')
+  }
+  
   return (
-    <StyledView className="flex-1 flex-row pt-4 pb-4" >
-      <StyledView className="w-6/12 items-start">
-        <StyledText className="text-black text-2xl font-bold">Home</StyledText>
-      </StyledView>
-      <StyledView className="border-blue-600 w-6/12 items-end">
-        <Pressable style={styles.buttonHeader}>
-          <StyledText className="text-blue-600 text-s">
+    <View style={{flex: 1, flexDirection: 'row'}}  className="pt-4 pb-4" >
+      <View className="w-6/12 items-start">
+        <Text className="text-black text-2xl font-bold">Home</Text>
+      </View>
+      <View className="border-blue-600 w-6/12 items-end">
+        <Pressable style={styles.buttonHeader} onPress={goToDadProfile}>
+          <Text className="text-blue-600 text-s">
             Perfil papá
-          </StyledText>
+          </Text>
         </Pressable>
-      </StyledView>
-    </StyledView>
+      </View>
+    </View>
   );
 
 }
@@ -139,15 +146,15 @@ const Home = props => {
 
   return (
     <ScrollView>
-      <StyledView className="p-5">
-        <StyledView className="">
+      <View className="p-5">
+        <View>
           <HomeHeader name="test"/>
-        </StyledView>
+        </View>
         
-        <StyledView><KidProfileButton/></StyledView>
-        <StyledText className="pt-2 text font-bold text-xl text-black">
+        <View><KidProfileButton/></View>
+        <Text className="pt-2 text font-bold text-xl text-black">
           Play with us
-        </StyledText>
+        </Text>
 
         {/*We can use a for cicle later to view all the available Games*/}
         <AvailableGame
@@ -157,16 +164,16 @@ const Home = props => {
           gameName={"Roblox: Murder Mystery 2"}
           gameDate={today}/>
 
-        <StyledText className="pt-2 text font-bold text-xl text-black">
+        <Text className="pt-2 text font-bold text-xl text-black">
           Después
-        </StyledText>
+        </Text>
 
         <NextGame
           gameUri="https://prod.docsiteassets.roblox.com/assets/avatar/character-customization/Avatar-Banner.jpg"
           gameName={"Minecraft"}
           coachName={"Kim"}
           gameDate={today}></NextGame>
-      </StyledView>
+      </View>
     </ScrollView>
     
   );
