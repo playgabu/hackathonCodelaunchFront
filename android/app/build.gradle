@@ -118,6 +118,9 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+    //Custom Libraries
+    implementation 'com.squareup.picasso:picasso:2.8'
+    implementation "androidx.cardview:cardview:1.0.0"
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
