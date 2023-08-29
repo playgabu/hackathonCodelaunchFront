@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Text, View, ImageBackground, StyleSheet, Image } from 'react-native';
+import { Text, View, ImageBackground, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 const styles = StyleSheet.create(
@@ -23,7 +23,7 @@ const styles = StyleSheet.create(
 );
 
 
-const AvailableGame = ({imageBg, coachName, coachUri, gameName, gameDate}) => {
+const AvailableGame = ({imageBg, coachName, coachUri, gameName, gameDate, onPress}) => {
 
   const getHoursText = (date) => {
     let timeHour = ' AM';
@@ -38,7 +38,7 @@ const AvailableGame = ({imageBg, coachName, coachUri, gameName, gameDate}) => {
   const image = {uri: imageBg};
 
   return (
-    <View className={"rounded-[30px] w-full h-52 overflow-hidden"}>
+    <TouchableOpacity className={"rounded-[30px] w-full h-52 overflow-hidden"} onPress={onPress}>
       <ImageBackground
         style={{height:"100%"}}
         source={image}>
@@ -48,7 +48,7 @@ const AvailableGame = ({imageBg, coachName, coachUri, gameName, gameDate}) => {
               className="pr-5 pt-5"
               style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
               <View style={styles.red} className="">
-                <Text className="text-center text-secondary">¡En Vivo!</Text>
+                <Text className="text-center text-white">¡En Vivo!</Text>
               </View>
             </View>
             <View style={{bottom: 50, position: 'absolute', justifyContent: 'center', alignItems: 'center'}}>
@@ -85,13 +85,13 @@ const AvailableGame = ({imageBg, coachName, coachUri, gameName, gameDate}) => {
                   </View>
                   <View>
                     <Text
-                      style={{paddingLeft: 10, flex: 3}}
+                      style={{paddingLeft: 10, flex: 3, color: 'white', fontSize: 16}}
                       className="text-white text-base">{gameName}
                     </Text>
                   </View>
                   <View style={{flexDirection: 'row', justifyContent: 'flex-end', flex: 1}}>
                     <View>
-                      <Text className="text-white text-base" >
+                      <Text style={{color: 'white', fontSize: 16}} className="text-white text-base" >
                         {getHoursText(gameDate)}
                       </Text>
                     </View>
@@ -101,7 +101,7 @@ const AvailableGame = ({imageBg, coachName, coachUri, gameName, gameDate}) => {
             </LinearGradient>
           </View>
       </ImageBackground>
-    </View>
+    </TouchableOpacity>
   );
 }
 

@@ -1,5 +1,7 @@
 import React from "react";
 import SessionInfo from "../components/SessionInfo";
+import NavigationToolbar from "../components/NavigationToolbar";
+
 
 import { Text, View, StyleSheet, Image, ImageBackground,ScrollView } from 'react-native';
 const styles = StyleSheet.create(
@@ -36,9 +38,10 @@ const KidProfile = () => {
 
   const gameInfo = [ startSession, endSession]
   return(
-    <ScrollView>
-      <View className="flex flex-column">
-        <View className="w-full h-52 flex flex-column mb-12">
+    <View style={{ flex: 1}}>
+      <ScrollView>
+      <View className="flex flex-col">
+        <View className="w-full h-52 flex flex-col mb-12">
           <ImageBackground
             resizeMode="cover"
             style={styles.image}
@@ -95,6 +98,14 @@ const KidProfile = () => {
 
       </View>
     </ScrollView>
+    <View >
+        <NavigationToolbar
+          current={'Profile'}>
+
+        </NavigationToolbar>
+      </View>
+    </View>
+    
     
   );
 }

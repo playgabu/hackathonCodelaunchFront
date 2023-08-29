@@ -1,11 +1,12 @@
 import React from "react";
+import NavigationToolbar from "../components/NavigationToolbar";
 import NextGame from "../components/NextGame";
 import AvailableGame from "../components/AvailableGame";
+import WhiteButton from "../components/WhiteButton";
 import { withExpoSnack } from 'nativewind';
 import { useNavigation } from '@react-navigation/native';
 
-import { Text, View, StyleSheet,Button, Pressable, Image, ImageBackground,ScrollView } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
+import { Text, View, StyleSheet, Image, TouchableOpacity,ScrollView } from 'react-native';
 
 const styles = StyleSheet.create(
   {
@@ -72,8 +73,7 @@ const styles = StyleSheet.create(
       flexDirection: 'row',
       justifyContent: 'flex-start',
       padding:10
-    }
-
+    },
   }
 );
 
@@ -108,12 +108,12 @@ const KidProfileButton = props => {
   }
 
   return (
-    <Pressable
+    <TouchableOpacity
       onPress={goToKidProfile}>
       <ProfilePictureCircle 
         uri="https://reactnative.dev/img/tiny_logo.png"
         userName="DiegoSonic"/>
-    </Pressable>
+    </TouchableOpacity>
   );
 };
 
@@ -121,7 +121,7 @@ const HomeHeader = props => {
   const navigation = useNavigation();
 
   const goToDadProfile = () => {
-    navigation.navigate('DadProfile')
+    navigation.navigate('SecureProfileValidation')
   }
   
   return (
@@ -130,11 +130,8 @@ const HomeHeader = props => {
         <Text className="text-black text-2xl font-bold">Home</Text>
       </View>
       <View className="border-blue-600 w-6/12 items-end">
-        <Pressable style={styles.buttonHeader} onPress={goToDadProfile}>
-          <Text className="text-blue-600 text-s">
-            Perfil papá
-          </Text>
-        </Pressable>
+        <WhiteButton  onPress={goToDadProfile} text={"Perfil papá"}>
+        </WhiteButton>
       </View>
     </View>
   );
@@ -145,36 +142,45 @@ const Home = props => {
   const today = new Date();
 
   return (
-    <ScrollView>
-      <View className="p-5">
-        <View>
-          <HomeHeader name="test"/>
+    <View style={{ flex: 1}}>
+      <ScrollView>
+        <View className="flex flex-col">
+          <View className="flex flex-2 p-5">
+            <View>
+              <HomeHeader name="test"/>
+            </View>
+            
+            <View><KidProfileButton/></View>
+            <Text className="pt-2 font-bold text-xl text-black">
+              Play with us
+            </Text>
+
+            <AvailableGame
+              coachName={"Javi"}
+              coachUri="https://reactnative.dev/img/tiny_logo.png"
+              imageBg="https://prod.docsiteassets.roblox.com/assets/avatar/character-customization/Avatar-Banner.jpg"
+              gameName={"Roblox: Murder Mystery 2"}
+              gameDate={today}/>
+
+            <Text className="pt-2 font-bold text-xl text-black">
+              Después
+            </Text>
+
+            <NextGame
+              gameUri="https://prod.docsiteassets.roblox.com/assets/avatar/character-customization/Avatar-Banner.jpg"
+              gameName={"Minecraft"}
+              coachName={"Kim"}
+              gameDate={today}></NextGame>
+          </View>
         </View>
-        
-        <View><KidProfileButton/></View>
-        <Text className="pt-2 text font-bold text-xl text-black">
-          Play with us
-        </Text>
+      </ScrollView>
+      <View >
+        <NavigationToolbar
+          current={'Home'}>
 
-        {/*We can use a for cicle later to view all the available Games*/}
-        <AvailableGame
-          coachName={"Javi"}
-          coachUri="https://reactnative.dev/img/tiny_logo.png"
-          imageBg="https://prod.docsiteassets.roblox.com/assets/avatar/character-customization/Avatar-Banner.jpg"
-          gameName={"Roblox: Murder Mystery 2"}
-          gameDate={today}/>
-
-        <Text className="pt-2 text font-bold text-xl text-black">
-          Después
-        </Text>
-
-        <NextGame
-          gameUri="https://prod.docsiteassets.roblox.com/assets/avatar/character-customization/Avatar-Banner.jpg"
-          gameName={"Minecraft"}
-          coachName={"Kim"}
-          gameDate={today}></NextGame>
+        </NavigationToolbar>
       </View>
-    </ScrollView>
+      </View>      
     
   );
 };
