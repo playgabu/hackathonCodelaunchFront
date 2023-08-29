@@ -21,6 +21,10 @@ const SelectProfile = () => {
     const next = () => {
         navigation.navigate('Home')
     }
+
+    const signin = () => {
+        navigation.navigate('Signin')
+    }
     return (
         <View className="flex flex-col w-screen h-screen flex-1 p-6  bg-primaryLighter">
             <View className='text-center'>
@@ -62,6 +66,13 @@ const SelectProfile = () => {
                     className='absolute inset-y-4 right-5'
                     source={require('../assets/icons/UserCircle.png')}
                     style={{ width: 30, height: 30 }}
+                />
+            </View>
+            <View className='mt-4'>
+                <Button
+                    text='Salir'
+                    isSecondary
+                    onPress={signin}
                 />
             </View>
             <View className='mt-4'>
