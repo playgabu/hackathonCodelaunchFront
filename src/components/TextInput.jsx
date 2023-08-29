@@ -26,7 +26,7 @@ const TextInpput = (props) => {
             </Text>
             <View className='flex flex-row'>
                 <TextInput
-                    className='flex-1 h-12 p-2 rounded-lg border-2'
+                    className='flex-1 h-12 p-2 rounded-lg border-2 bg-gray-200'
                     onChangeText={onChange}
                     placeholder={placeholder || ''}
                     inputMode={inputMode}
@@ -34,7 +34,10 @@ const TextInpput = (props) => {
                     value={value || ''}
                 />
                 {isPassword && (
-                    <TouchableOpacity onPress={togglePasswordVisibility} className='absolute inset-y-2 right-2'>
+                    <TouchableOpacity
+                        onPress={togglePasswordVisibility}
+                        className='absolute inset-y-2 right-2'
+                    >
                         <Image
                             source={require('../assets/icons/Eye.png')}
                             style={{ width: 30, height: 30 }}

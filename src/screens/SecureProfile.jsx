@@ -13,7 +13,7 @@ const Login = () => {
     }
     
     const next = () => {
-        console.log('next')
+        navigation.navigate('ChildAccount')
     }
     
     const handlePin = (e) => {
