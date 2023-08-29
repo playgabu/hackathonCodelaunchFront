@@ -30,7 +30,7 @@ const TextInpput = (props) => {
                     onChangeText={onChange}
                     placeholder={placeholder || ''}
                     inputMode={inputMode}
-                    secureTextEntry={!isPasswordVisible} 
+                    secureTextEntry={isPassword && !isPasswordVisible} 
                     value={value || ''}
                 />
                 {isPassword && (
