@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Main from './screens/Main';
 import Login from './screens/Login';
 import Signin from './screens/Signin';
+import ChildAccount from './screens/ChildAccount';
 import SecureProfile from './screens/SecureProfile';
 import Home from './screens/Home';
 import DadsProfile from './screens/DadsProfile';
@@ -14,7 +15,7 @@ const Stack = createStackNavigator();
 export default function Navigation() {
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="Main">
+            <Stack.Navigator initialRouteName="ChildAccount">
                 <Stack.Screen name="Main" component={Main} options={{ headerShown: false }} />
                 <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
                 <Stack.Screen name="Signin" component={Signin} options={{ headerShown: false }} />
@@ -22,6 +23,7 @@ export default function Navigation() {
                 <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
                 <Stack.Screen name="DadProfile" component={DadsProfile} options={{ headerShown: false }} />
                 <Stack.Screen name="KidProfile" component={KidProfile} options={{ headerShown: false }} />
+                <Stack.Screen name="ChildAccount" component={ChildAccount} options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
     );
