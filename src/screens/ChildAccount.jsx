@@ -43,7 +43,7 @@ const ChildAccount = () => {
     }
 
     const next = () => {
-        // navigation.navigate('Main')
+        navigation.navigate('SelectProfile')
     }
     
     const gender = ['Niño', 'Niña']
@@ -88,7 +88,7 @@ const ChildAccount = () => {
                         onPress={toggleModal}
                     >
                         <View className='flex flex-row h-100 w-100'>
-                            <Text className='flex text-md text-bold text-black mx-2'>
+                            <Text className='flex text-md font-bold text-black mx-2'>
                                 Seleccionar Avatar
                             </Text>
                             <Image
@@ -108,7 +108,7 @@ const ChildAccount = () => {
                         onRequestClose={toggleModal}
                     >
                         <View className='flex bg-secondary rounded-3xl w-scren h-50 m-8 p-8'>
-                            <Text className='text-bold text-xl text-black p-2'>Selecciona un avatar</Text>
+                            <Text className='font-bold text-xl text-black p-2'>Selecciona un avatar</Text>
                             <FlatList
                                 data={avatars}
                                 numColumns={3}
@@ -129,7 +129,7 @@ const ChildAccount = () => {
                             >
                             </FlatList>
                             <TouchableOpacity onPress={toggleModal}>
-                                <Text className='text-center text-black text-lg text-bold'>Cerrar</Text>
+                                <Text className='text-center text-black text-lg font-bold'>Cerrar</Text>
                             </TouchableOpacity>
                         </View>
                     </Modal>

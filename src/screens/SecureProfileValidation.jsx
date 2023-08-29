@@ -15,11 +15,11 @@ const SecureProfileValidation = () => {
     const next = () => {
         //Validation
         console.log('DadProfile')
+        navigation.navigate('SelectProfile')
     }
     
     const handlePin = (e) => {
         console.log(e)
-    
     }
     const back = () => {
         navigation.navigate('Login')
@@ -51,6 +51,7 @@ const SecureProfileValidation = () => {
                 <View style={{flex:1,justifyContent:'flex-end'}}>
                     <Button
                         text={"Continuar"}
+                        onPress={next}
                     ></Button>
                 </View>
             </View>

@@ -6,6 +6,8 @@ import Login from './screens/Login';
 import Signin from './screens/Signin';
 import ChildAccount from './screens/ChildAccount';
 import SecureProfile from './screens/SecureProfile';
+import SelectProfile from './screens/SelectProfile';
+import ForgottenPassword from './screens/ForgottenPassword';
 import Home from './screens/Home';
 import DadsProfile from './screens/DadsProfile';
 import KidProfile from './screens/KidProfile';
@@ -16,11 +18,13 @@ const Stack = createStackNavigator();
 export default function Navigation() {
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="ChildAccount">
+            <Stack.Navigator initialRouteName="Main">
                 <Stack.Screen name="Main" component={Main} options={{ headerShown: false }} />
                 <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
                 <Stack.Screen name="Signin" component={Signin} options={{ headerShown: false }} />
                 <Stack.Screen name="SecureProfile" component={SecureProfile} options={{ headerShown: false }} />
+                <Stack.Screen name="SelectProfile" component={SelectProfile} options={{ headerShown: false }} />
+                <Stack.Screen name="ForgottenPassword" component={ForgottenPassword} options={{ headerShown: false }} />
                 <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
                 <Stack.Screen name="DadProfile" component={DadsProfile} options={{ headerShown: false }} />
                 <Stack.Screen name="KidProfile" component={KidProfile} options={{ headerShown: false }} />

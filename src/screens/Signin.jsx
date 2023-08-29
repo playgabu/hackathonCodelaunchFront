@@ -19,7 +19,7 @@ const Signin = () => {
     }
 
     const signin = () => {
-        // navigation.navigate('SecureProfile')
+        navigation.navigate('SecureProfileValidation')
     }
 
     const back = () => {
@@ -27,7 +27,7 @@ const Signin = () => {
     }
 
     const forgottenPassword = () => {
-        console.log('Open Terminos')
+        navigation.navigate('ForgottenPassword')
     }
 
 
