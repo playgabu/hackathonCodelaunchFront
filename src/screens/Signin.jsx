@@ -4,6 +4,8 @@ import Title from '../components/Title'
 import TextInput from '../components/TextInput'
 import Button from '../components/Button'
 import { useNavigation } from '@react-navigation/native';
+import axiosInstance from '../utils/axiosInstance'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Signin = () => {
     const [accountData, setAccountData ] = useState({
@@ -18,8 +20,27 @@ const Signin = () => {
         })
     }
 
-    const signin = () => {
-        navigation.navigate('SecureProfileValidation')
+    const signin = async () => {
+        let pinPending = false
+        try {
+            let res = await axiosInstance.post('login', {
+                email: accountData.email,
+                password: accountData.password,
+            })
+            await AsyncStorage.setItem('token', res.data.accessToken)
+            pinPending = res.data.pinPending
+        }
+        catch(err) {
+            console.error(err)
+            return
+        }
+
+        if (pinPending) {
+            navigation.navigate('SecureProfile')
+        }
+        else {
+            navigation.navigate('ChildAccount')
+        }
     }
 
     const back = () => {

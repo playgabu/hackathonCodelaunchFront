@@ -4,6 +4,8 @@ import Title from '../components/Title'
 import TextInput from '../components/TextInput'
 import Button from '../components/Button'
 import { useNavigation } from '@react-navigation/native';
+import axiosInstance from '../utils/axiosInstance'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Login = () => {
     const [accountData, setAccountData ] = useState({
@@ -15,13 +17,42 @@ const Login = () => {
     const navigation = useNavigation();
     
     const handleData = (e) => {
-        console.log(e)
         setAccountData({
             ...accountData, [e.field]: e.value
         })
     }
 
-    const registerMe = () => {
+    const registerMe = async () => {
+        try {
+            await axiosInstance.post('user', {
+                fullName: accountData.name,
+                email: accountData.email,
+                phone: accountData.phone,
+                password: accountData.password,
+            })
+        }
+        catch(err) {
+            console.error(err)
+            Toast.show({
+                type: 'error',
+                text1: 'Error',
+            })
+            return
+        }
+
+        try {
+            let res = await axiosInstance.post('login', {
+                email: accountData.email,
+                password: accountData.password,
+            })
+
+            await AsyncStorage.setItem('token', res.data.accessToken)
+        }
+        catch(err) {
+            console.error(err)
+            return
+        }
+
         navigation.navigate('SecureProfile')
     }
 
