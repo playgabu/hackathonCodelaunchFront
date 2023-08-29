@@ -30,6 +30,7 @@ const styles = StyleSheet.create(
 
   }
 );
+
 const KidProfile = () => {
   const coachName = 'Javi'
   const today = new Date();
