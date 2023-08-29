@@ -7,14 +7,14 @@ import DateInput from '../components/DateInput'
 import Picker from '../components/Picker'
 import Button from '../components/Button'
 import { useNavigation } from '@react-navigation/native';
+import axiosInstance from '../utils/axiosInstance'
 
 const ChildAccount = () => {
     const [accountData, setAccountData ] = useState({
         name: '',
         birthdate: '',
-        phone: '',
-        email: '',
-        password: ''
+        gender: '',
+        favoriteGames: [],
     })
     const navigation = useNavigation();
 
@@ -42,12 +42,35 @@ const ChildAccount = () => {
         navigation.navigate('SecureProfile')
     }
 
-    const next = () => {
-        navigation.navigate('SelectProfile')
+    const next = async () => {
+        const gameKeys = {
+            'Roblox': 0,
+            'Minecraft': 1,
+            'Fortnite': 2,
+            'Fall Guys': 3,
+        }
+        const genderKeys = {
+            'Niño': 0,
+            'Niña': 1,
+            'Prefiero no decirlo': 2
+        }
+        try {
+            await axiosInstance.post('child', {
+                username: accountData.name,
+                birthDate: accountData.birthdate,
+                genre: accountData.gender,
+                favoriteGames: [accountData.favoriteGames],
+                avatar: selectedAvatar,
+            })
+        }
+        catch (e) {
+            console.error(e)
+        }
+        navigation.navigate('Home')
     }
     
-    const gender = ['Niño', 'Niña']
-    const games = ['Juego 1','Juego 2','Juego 3'];
+    const gender = ['Niño', 'Niña', 'Prefiero no decirlo']
+    const games = ['Roblox','Minecraft','Fortnite', 'Fall Guys'];
 
     const avatars = [
         'https://source.boringavatars.com/beam/120/avatar1?colors=7B97FF,9F76F5,FF6A65,FFC73B',
@@ -144,18 +167,18 @@ const ChildAccount = () => {
                 <DateInput
                     label='Fecha de nacimiento'
                     placeholder='Fecha'
-                    onChange={e => handleData({ value: e, field: 'name' })}
+                    onChange={e => handleData({ value: e, field: 'birthdate' })}
                 ></DateInput>
 
                 <Picker
-                    label='Género (opcional)'
+                    label='Género'
                     options={gender}
-                    onChange={(e)=>console.log(e)}
+                    onChange={(e)=>handleData({ value: e, field: 'gender' })}
                 />
                 <Picker
                     label='Juegos favoritos'
                     options={games}
-                    onChange={(e)=>console.log(e)}
+                    onChange={(e)=>handleData({ value: e, field: 'favoriteGames' })}
                 />
             </View>
             <View className='mt-4'>

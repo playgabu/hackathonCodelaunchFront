@@ -4,21 +4,32 @@ import Title from '../components/Title'
 import PinInput from '../components/PinInput'
 import Button from '../components/Button'
 import { useNavigation } from '@react-navigation/native';
+import axiosInstance from '../utils/axiosInstance'
 
 const Login = () => {
     const navigation = useNavigation();
+    const [pin, setPin] = useState('')
 
     const handleData = (e) => {
-        console.log(e)
+        // setPin(pin + e)
     }
     
-    const next = () => {
+    const next = async () => {
+        navigation.navigate('ChildAccount')
+        return
+        console.log(pin, this.pin)
+        try {
+            await axiosInstance.post('user/pin', { pin })
+        }
+        catch(err) {
+            console.error(err)
+            return
+        }
         navigation.navigate('ChildAccount')
     }
     
     const handlePin = (e) => {
-        console.log(e)
-    
+        setPin(e)
     }
     const back = () => {
         navigation.navigate('Login')
@@ -44,7 +55,7 @@ const Login = () => {
                     handleValue={handlePin}
                 />
                 <Text className='text-black text-lg font-bold'>
-                    Lo podrás cambiar después en c|onfiguración
+                    Lo podrás cambiar después en configuración
                 </Text>
             </View>
             
