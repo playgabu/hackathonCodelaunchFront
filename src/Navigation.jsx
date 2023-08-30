@@ -12,6 +12,7 @@ import Home from './screens/Home';
 import DadsProfile from './screens/DadsProfile';
 import KidProfile from './screens/KidProfile';
 import SecureProfileValidation from './screens/SecureProfileValidation';
+import GameSessionRoom from './screens/GameSessionRoom';
 
 const Stack = createStackNavigator();
 
@@ -30,6 +31,7 @@ export default function Navigation() {
                 <Stack.Screen name="KidProfile" component={KidProfile} options={{ headerShown: false }} />
                 <Stack.Screen name="ChildAccount" component={ChildAccount} options={{ headerShown: false }} />
                 <Stack.Screen name="SecureProfileValidation" component={SecureProfileValidation} options={{ headerShown: false }} />
+                <Stack.Screen name="GameSessionRoom" component={GameSessionRoom} options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
     );

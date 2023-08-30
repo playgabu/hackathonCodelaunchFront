@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const axiosInstance = axios.create(
     {
-        baseUrl: "https://inruivy4ji.execute-api.us-east-1.amazonaws.com/dev/"
+        baseURL: "https://inruivy4ji.execute-api.us-east-1.amazonaws.com/dev/"
     }
 )
 

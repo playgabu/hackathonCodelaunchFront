@@ -41,6 +41,13 @@ public class RNGabuWidgetModule extends ReactContextBaseJavaModule {
 
     }
 
+    @ReactMethod
+    public void setAudio(boolean state){
+        Intent intent = new Intent("SET_AUDIO_STATE", null, reactContext, RNGabuWidgetService.class);
+        intent.putExtra("STATE", state);
+        this.reactContext.startService(intent);
+    }
+
     // @ReactMethod
     // public void openWidget() {
     //     Intent intent = new Intent("ACTION_OPEN_WIDGET", null, reactContext, RNGabuWidgetService.class);

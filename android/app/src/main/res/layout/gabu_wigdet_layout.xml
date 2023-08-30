@@ -40,10 +40,10 @@
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/collapsed_cv"
-                        android:layout_width="56dp"
-                        android:layout_height="56dp"
-                        android:layout_marginLeft="1dp"
-                        android:layout_marginTop="1dp"
+                        android:layout_width="54dp"
+                        android:layout_height="54dp"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginTop="2dp"
                         android:background="@drawable/card_edge"
                         card_view:cardCornerRadius="30dp">
 
@@ -85,7 +85,9 @@
                                 android:id="@+id/imgCoach"
                                 android:layout_width="14dp"
                                 android:layout_height="14dp"
-                                android:src="@drawable/home_logo"/>
+                                android:src="@drawable/home_logo"
+                                android:layout_marginTop="3dp"
+                                android:layout_marginRight="2dp"/>
 
                             <TextView
                                 android:id="@+id/textCoach"
@@ -93,6 +95,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Coach Javi"
                                 android:textColor="@color/text_white"
+                                android:layout_centerVertical="true"
                                 android:textSize="14dp" />
                         </LinearLayout>
                     </LinearLayout>
@@ -112,11 +115,31 @@
 
                     <ImageView
                         android:id="@+id/collapsable_microphone_iv"
-                        android:layout_width="44dp"
-                        android:layout_height="44dp"
-                        android:layout_marginLeft="6dp"
-                        android:layout_marginTop="6dp"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:layout_marginLeft="9dp"
+                        android:layout_marginTop="9dp"
                         android:src="@drawable/microphone" />
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/collapsable_signout_cv"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_marginStart="230dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginEnd="7dp"
+                    android:layout_marginRight="7dp"
+                    card_view:cardBackgroundColor="@color/inactive_red"
+                    card_view:cardCornerRadius="30dp"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/collapsable_signout_iv"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:layout_marginLeft="9dp"
+                        android:layout_marginTop="9dp"
+                        android:src="@drawable/signout" />
                 </androidx.cardview.widget.CardView>
             </androidx.cardview.widget.CardView>
         </RelativeLayout>
